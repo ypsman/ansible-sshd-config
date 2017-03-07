@@ -4,7 +4,7 @@ ansible sshd-config
 
 This Role configures sshd configures.
 
-Config SSH daemon, root Login and Password Auth
+Config SSH daemon, root Login and Password Auth.
 
 Default option is to
       PermitRootLogin yes           # do not allow Root to login via ssh
