@@ -1,0 +1,23 @@
+galaxy_info:
+  author: ypsman
+  description: Config SSH daemon, root Login and Password Auth
+  license: license (GPLv2, CC-BY, etc)
+  min_ansible_version: 1.2
+  platforms:
+  - name: Debian
+    versions:
+    - wheezy
+    - jessie
+    - stretch
+  - name: Ubuntu
+    versions: all
+  galaxy_tags:
+  - ssh
+  - sshd
+  - sshd-config
+  - secure-shell
+  - PermitRootLogin
+  - PasswordAuthentication
+  - ubuntu
+  - debian
+dependencies: []
