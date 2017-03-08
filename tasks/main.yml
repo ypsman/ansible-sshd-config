@@ -1,11 +1,11 @@
 ---
 # tasks file for sshd-config
 - lineinfile:
-    path: /etc/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
     regexp: '^PermitRootLogin'
     line: 'PermitRootLogin {{ sshd_PermitRootLogin }}'
 
 - lineinfile:
-    path: /etc/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
     regexp: '^PasswordAuthentication'
     line: 'PasswordAuthentication {{ sshd_PasswordAuthentication }}'
