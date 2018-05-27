@@ -2,13 +2,17 @@ ansible sshd-config
 ===================
 [![Build Status](https://travis-ci.org/ypsman/ansible-sshd-config.svg?branch=master)](https://travis-ci.org/ypsman/ansible-sshd-config)
 
-This Role configures sshd configures.
+This Role Changes sshd config.
 
-Config SSH daemon, root Login and Password Auth.
+Variables to configure are:
 
-Default option is to
-      PermitRootLogin yes           # do not allow Root to login via ssh
-      PasswordAuthentication no     # Only login with SSH-Key
+    PermitRootLogin
+    PasswordAuthentication
+    ListenAddress
+
+It also Validates the Conifg before<br>
+restarting the deamon.
+
 
 Example Playbook
 ----------------
@@ -16,5 +20,6 @@ Example Playbook
     - hosts: all
       roles:
         - role: ypsman.sshd-config
-          sshd_PermitRootLogin: yes           # optional  
-          sshd_PasswordAuthentication: no     # optional
+          sshd_PermitRootLogin: 'no'
+          sshd_PasswordAuthentication: 'no'
+          sshd_ListenAddress: '0.0.0.0'

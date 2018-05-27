@@ -1,11 +1,26 @@
 ---
 # tasks file for sshd-config
-- lineinfile:
+- name: sshd PermitRootLogin set to {{ sshd_PermitRootLogin }}
+  lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^PermitRootLogin'
     line: 'PermitRootLogin {{ sshd_PermitRootLogin }}'
+    validate: 'sshd -t -f %s'
+  notify: restart ssh service
+  when: sshd_PermitRootLogin is defined
 
-- lineinfile:
+- name: sshd PasswordAuthentication set to {{ sshd_PasswordAuthentication }}
+  lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^PasswordAuthentication'
     line: 'PasswordAuthentication {{ sshd_PasswordAuthentication }}'
+  notify: restart ssh service
+  when: sshd_PasswordAuthentication is defined
+
+- name: SSH ListenAddress set to '{{ sshd_ListenAddress }}'
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^ListenAddress'
+    line: 'ListenAddress {{ sshd_ListenAddress }}'
+  notify: restart ssh service
+  when: sshd_ListenAddress is defined
