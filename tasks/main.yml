@@ -1,6 +1,6 @@
 ---
 # tasks file for sshd-config
-- name: sshd PermitRootLogin set to {{ sshd_PermitRootLogin }}
+- name: sshd PermitRootLogin set to '{{ sshd_PermitRootLogin }}'
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^PermitRootLogin'
@@ -9,7 +9,7 @@
   notify: restart ssh service
   when: sshd_PermitRootLogin is defined
 
-- name: sshd PasswordAuthentication set to {{ sshd_PasswordAuthentication }}
+- name: sshd PasswordAuthentication set to '{{ sshd_PasswordAuthentication }}'
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^PasswordAuthentication'
