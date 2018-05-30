@@ -14,6 +14,7 @@
     dest: /etc/ssh/sshd_config
     regexp: '^PasswordAuthentication'
     line: 'PasswordAuthentication {{ sshd_PasswordAuthentication }}'
+    validate: 'sshd -t -f %s'
   notify: restart ssh service
   when: sshd_PasswordAuthentication is defined
 
@@ -22,5 +23,6 @@
     dest: /etc/ssh/sshd_config
     regexp: '^ListenAddress'
     line: 'ListenAddress {{ sshd_ListenAddress }}'
+    validate: 'sshd -t -f %s'
   notify: restart ssh service
   when: sshd_ListenAddress is defined
